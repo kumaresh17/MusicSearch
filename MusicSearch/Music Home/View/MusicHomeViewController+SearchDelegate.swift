@@ -47,7 +47,7 @@ extension MusicHomeViewController:UISearchBarDelegate {
         guard let searchText = searchBar.text, !searchText.isEmpty else { return }
         ActivityIndicator.showActivityIndicator(view: self.view)
         
-        ///Make sure to escape string, in case of empty space we need to escape the string to let it work
+        /** Make sure to escape string, in case of empty space we need to escape the string to let it work **/
         guard let escapedString = searchText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
         musicViewModel?.getMusic(forType: type, withSearchText: escapedString)
     }

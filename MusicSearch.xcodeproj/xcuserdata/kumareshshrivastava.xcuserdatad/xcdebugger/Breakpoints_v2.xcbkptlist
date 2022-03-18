@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CFF5EBB2-7AB4-4592-A6E5-F66711F04566"
+            uuid = "92D631E2-60F5-4F9D-8859-307C3A48035D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MusicSearch/Helper/Network Helper/NetworkManager.swift"
+            filePath = "MusicSearch/Helper/Network Helper/NetworkManager+JsonDecoder.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "sendRequest(payload:completion:)"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "jsonDecoder(data:response:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

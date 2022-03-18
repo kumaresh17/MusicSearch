@@ -7,6 +7,7 @@
 
 import XCTest
 @testable import MusicSearch
+import Combine
 
 class MusicSearchTests: XCTestCase,PayLoadFormat {
     
@@ -167,8 +168,131 @@ class MusicSearchTests: XCTestCase,PayLoadFormat {
     //MARK: - Music View Model
     /**
         Test Music View model using mock network manager api response and test the Combine publisher and sink
+        -  Success and error cases
      */
     
+    func test_getMusic_album_viewmodel_success() {
+        
+        let expect = expectation(description: "API response completion")
+        let apiModule = APIModule(searchType: .album, payloadType: .requestMethodGET, searchText: "sonu nigam")
+        mockNetworkManager = MockNetworkManager(type: apiModule.searchType)
+        musicViewModel = MusicViewModel(apiModule: apiModule, networkManager: mockNetworkManager)
+        musicViewModel.getMusic(forType: apiModule.searchType, withSearchText: apiModule.searchText)
+       
+        
+        var anyCancelable = Set<AnyCancellable>()
+        musicViewModel!.dataForViewPub
+            .receive(on: DispatchQueue.main)
+            .sink {(result) in
+                expect.fulfill()
+                XCTAssertNotNil(result)
+                XCTAssertEqual(result![0].title, "Sonu Nigam: Best Of Me")
+                XCTAssertEqual(result![0].name, "Sonu Nigam")
+                XCTAssertEqual(result![0].images?.first?.url,"https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png")
+                XCTAssertEqual(result![0].images?[1].url,"https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png")
+                XCTAssertEqual(result![0].images?[2].url,"https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png")
+                XCTAssertEqual(result![0].images?[3].url,"https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png")
+            }
+            .store(in: &anyCancelable)
+        
+        waitForExpectations(timeout: 1, handler: nil)
+        
+    }
     
+    
+    func test_getMusic_artist_viewmodel_success() {
+        
+        let expect = expectation(description: "API response completion")
+        let apiModule = APIModule(searchType: .artist, payloadType: .requestMethodGET, searchText: "sonu nigam")
+        mockNetworkManager = MockNetworkManager(type: apiModule.searchType)
+        musicViewModel = MusicViewModel(apiModule: apiModule, networkManager: mockNetworkManager)
+        musicViewModel.getMusic(forType: apiModule.searchType, withSearchText: apiModule.searchText)
+       
+        
+        var anyCancelable = Set<AnyCancellable>()
+        musicViewModel!.dataForViewPub
+            .receive(on: DispatchQueue.main)
+            .sink {(result) in
+                expect.fulfill()
+                XCTAssertNotNil(result)
+                XCTAssertEqual(result![0].name, "https://www.last.fm/music/Sonu+Nigam")
+                XCTAssertEqual(result![0].title, "Sonu Nigam")
+            }
+            .store(in: &anyCancelable)
+        
+        waitForExpectations(timeout: 1, handler: nil)
+        
+    }
+    
+    func test_getMusic_track_viewmodel_success() {
+        
+        let expect = expectation(description: "API response completion")
+        let apiModule = APIModule(searchType: .track, payloadType: .requestMethodGET, searchText: "sonu nigam")
+        mockNetworkManager = MockNetworkManager(type: apiModule.searchType)
+        musicViewModel = MusicViewModel(apiModule: apiModule, networkManager: mockNetworkManager)
+        musicViewModel.getMusic(forType: apiModule.searchType, withSearchText: apiModule.searchText)
+       
+        
+        var anyCancelable = Set<AnyCancellable>()
+        musicViewModel!.dataForViewPub
+            .receive(on: DispatchQueue.main)
+            .sink {(result) in
+                expect.fulfill()
+                XCTAssertNotNil(result)
+                XCTAssertEqual(result![0].title, "Main Agar Kahoon")
+                XCTAssertEqual(result![0].name, "Sonu Nigam")
+            }
+            .store(in: &anyCancelable)
+        
+        waitForExpectations(timeout: 1, handler: nil)
+        
+    }
+    
+    func test_getMusic_artist_viewmodel_error() {
+        
+        let expect = expectation(description: "API response completion")
+        let apiModule = APIModule(searchType: .artist, payloadType: .requestMethodGET, searchText: "sonu nigam")
+        mockNetworkManager = MockNetworkManager(type: apiModule.searchType)
+        mockNetworkManager.shouldReturnError = true
+        musicViewModel = MusicViewModel(apiModule: apiModule, networkManager: mockNetworkManager)
+        musicViewModel.getMusic(forType: apiModule.searchType, withSearchText: apiModule.searchText)
+        
+        var anyCancelable = Set<AnyCancellable>()
+        musicViewModel.errorPub
+            .receive(on:DispatchQueue.main)
+            .sink { (error) in
+                expect.fulfill()
+                XCTAssertNotNil(error)
+                XCTAssertEqual(error?.localizedDescription,"The operation couldn’t be completed. (MusicSearchTests.MockNetworkManager.MockServiceError error 0.)")
+            }
+            .store(in: &anyCancelable)
+        
+        waitForExpectations(timeout: 1, handler: nil)
+        
+    }
+    
+    func test_getMusic_artist_viewmodel_empty_search_result() {
+        
+        let expect = expectation(description: "API response completion")
+        let apiModule = APIModule(searchType: .artist, payloadType: .requestMethodGET, searchText: "")
+        mockNetworkManager = MockNetworkManager(false, withMockData: "[]")
+       
+        musicViewModel = MusicViewModel(apiModule: apiModule, networkManager: mockNetworkManager)
+        musicViewModel.getMusic(forType: apiModule.searchType, withSearchText: apiModule.searchText)
+        
+        var anyCancelable = Set<AnyCancellable>()
+        musicViewModel!.errorPub
+            .receive(on: DispatchQueue.main)
+            .sink {(error) in
+                expect.fulfill()
+                XCTAssertNotNil(error)
+                print(error as Any)
+            }
+            .store(in: &anyCancelable)
+        
+        waitForExpectations(timeout: 1, handler: nil)
+        
+    }
+
 
 }
