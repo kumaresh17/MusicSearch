@@ -89,6 +89,9 @@ final class NetworkManager: NetworkServiceProtocol {
             completion(.failure(HandledError.invalidRequestHeader))
             return
         }
+        
+        //Kumaresh Hack
+        //return
         task = urlSession.dataTask(with: urlRequest) { [weak self] (data, response, error) in
             self?.jsonDecoder(data: data ?? nil, response: response ?? nil, completion: completion)
         }

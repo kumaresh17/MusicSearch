@@ -9,34 +9,82 @@ import XCTest
 
 class MusicSearchUITests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    func test_navigation_title_searchfield_track_artist_album_buttons_exits() {
+        
         let app = XCUIApplication()
         app.launch()
+        
+        let navTitle = app.navigationBars["Music search"].staticTexts["Music search"]
+        let searchField = app.searchFields["Search by album | track | artist "]
 
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        XCTAssertTrue(navTitle.exists)
+        XCTAssertTrue(searchField.exists)
+        
+
+        let trackSegment = app/*@START_MENU_TOKEN@*/.buttons["Track"]/*[[".segmentedControls[\"scopeBar\"].buttons[\"Track\"]",".buttons[\"Track\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        let artistSegment = app/*@START_MENU_TOKEN@*/.buttons["Artist"]/*[[".segmentedControls[\"scopeBar\"].buttons[\"Artist\"]",".buttons[\"Artist\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        let albumSegment = app/*@START_MENU_TOKEN@*/.buttons["Album"]/*[[".segmentedControls[\"scopeBar\"].buttons[\"Album\"]",".buttons[\"Album\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        
+        XCTAssertTrue(trackSegment.exists)
+        XCTAssertTrue(artistSegment.exists)
+        XCTAssertTrue(albumSegment.exists)
     }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+    
+    /**
+           Important note to test :- Simulator -> I/O - > Keyboard -> unselect connect to hardware keyboard to perform below UI test
+     */
+    func test_music_screen_search_and_activity_indicator_shows_hide_on_api_result_and_navigated_to_detail_screen_back() {
+        
+        let app = XCUIApplication()
+        app.launch()
+        
+        let activityIndicator = app.activityIndicators["In progress"]
+        
+        let expect = expectation(description: "API response completion")
+        let searchByAlbumTrackArtistSearchField = app.searchFields["Search by album | track | artist "]
+        searchByAlbumTrackArtistSearchField.tap()
+        
+        
+        let sKey = app/*@START_MENU_TOKEN@*/.keys["S"]/*[[".keyboards.keys[\"S\"]",".keys[\"S\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        sKey.tap()
+        
+        
+        let oKey = app/*@START_MENU_TOKEN@*/.keys["o"]/*[[".keyboards.keys[\"o\"]",".keys[\"o\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        oKey.tap()
+        
+        
+        let nKey = app/*@START_MENU_TOKEN@*/.keys["n"]/*[[".keyboards.keys[\"n\"]",".keys[\"n\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        nKey.tap()
+        
+        
+        let uKey = app/*@START_MENU_TOKEN@*/.keys["u"]/*[[".keyboards.keys[\"u\"]",".keys[\"u\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        uKey.tap()
+        
+        app/*@START_MENU_TOKEN@*/.buttons["Search"]/*[[".keyboards",".buttons[\"search\"]",".buttons[\"Search\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        XCTAssertTrue(activityIndicator.exists)
+        
+        expect.fulfill()
+        
+        let tableCell =  app.tables/*@START_MENU_TOKEN@*/.staticTexts["Sound Of Silver"]/*[[".cells.staticTexts[\"Sound Of Silver\"]",".staticTexts[\"Sound Of Silver\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        
+        tableCell.tap()
+        
+        waitForExpectations(timeout: 15, handler: nil)
+        
+        XCTAssertFalse(activityIndicator.exists)
+        
+        let musicDetailsNavigationBar = app.navigationBars["Music details"]
+        XCTAssertTrue(musicDetailsNavigationBar.exists)
+        let title = app.staticTexts["Sound Of Silver"]
+        XCTAssertTrue(title.exists)
+        let name =  app.staticTexts["LCD Soundsystem"]
+        XCTAssertTrue(name.exists)
+        //back
+        musicDetailsNavigationBar.buttons["Music search"].tap()
+        // serach field visible
+        XCTAssertTrue(searchByAlbumTrackArtistSearchField.exists)
+        
     }
 }
