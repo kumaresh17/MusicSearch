@@ -9,7 +9,7 @@ import XCTest
 @testable import MusicSearch
 import Combine
 
-class MusicSearchTests: XCTestCase,PayLoadFormat {
+class ApiPayload_NetworkManager_ViewModelTests: XCTestCase,PayLoadFormat {
     
     var mockNetworkManager:MockNetworkManager!
     var apiModule:APIModuleProtocol!

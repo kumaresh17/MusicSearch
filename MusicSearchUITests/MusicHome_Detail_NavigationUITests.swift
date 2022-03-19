@@ -7,7 +7,7 @@
 
 import XCTest
 
-class MusicSearchUITests: XCTestCase {
+class MusicHome_Detail_NavigationUITests: XCTestCase {
 
     func test_navigation_title_searchfield_track_artist_album_buttons_exits() {
         
@@ -32,7 +32,7 @@ class MusicSearchUITests: XCTestCase {
     }
     
     /**
-           Important note to test :- Simulator -> I/O - > Keyboard -> unselect connect to hardware keyboard to perform below UI test
+     Important note to test :- Simulator -> I/O - > Keyboard -> unselect connect to hardware keyboard to perform below UI test, else test will crash as it won't br able to find the physical keyboard KEYS.
      */
     func test_music_screen_search_and_activity_indicator_shows_hide_on_api_result_and_navigated_to_detail_screen_back() {
         
