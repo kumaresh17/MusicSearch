@@ -27,7 +27,7 @@ struct ActivityIndicator {
     
     static func stopActivityIndicator() {
         spinner?.stopAnimating()
-        /// UiView extesion is been used here
+        /// UiView extesion
         spinner?.remove()
     }
 }

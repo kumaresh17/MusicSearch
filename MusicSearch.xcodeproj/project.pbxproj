@@ -181,8 +181,8 @@
 		402806FA27E25FF000ACA8E0 /* Music Home */ = {
 			isa = PBXGroup;
 			children = (
-				4028072227E27D0600ACA8E0 /* ViewModel */,
 				4028070127E264C300ACA8E0 /* View */,
+				4028072227E27D0600ACA8E0 /* ViewModel */,
 				4028071B27E2779000ACA8E0 /* Model */,
 			);
 			path = "Music Home";
@@ -231,12 +231,12 @@
 			isa = PBXGroup;
 			children = (
 				4028070527E2690800ACA8E0 /* ApiPayload.swift */,
-				4028070F27E274F300ACA8E0 /* NetworkManager.swift */,
 				4028071127E2753900ACA8E0 /* URLSessionProtocol.swift */,
-				4028071327E2755800ACA8E0 /* NetworkReachabilityManager.swift */,
+				4028070F27E274F300ACA8E0 /* NetworkManager.swift */,
 				4028071527E2760E00ACA8E0 /* NetworkManager+JsonDecoder.swift */,
 				4028071727E2764600ACA8E0 /* NetworkManager+PrepareRequest.swift */,
 				4028071927E2769D00ACA8E0 /* HandledError.swift */,
+				4028071327E2755800ACA8E0 /* NetworkReachabilityManager.swift */,
 			);
 			path = "Network Helper";
 			sourceTree = "<group>";
