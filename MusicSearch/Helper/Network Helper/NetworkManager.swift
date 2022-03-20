@@ -19,7 +19,7 @@ protocol NetworkServiceProtocol : AnyObject {
     var urlSession: URLSessionProtocol { get }
 }
 
-///  API manager class to handle the API calls
+///  Network manager class to handle the API calls
 final class NetworkManager: NetworkServiceProtocol {
     /// URLSession used for query
     var urlSession: URLSessionProtocol
@@ -47,7 +47,7 @@ final class NetworkManager: NetworkServiceProtocol {
      Reachability
      
      - Start the reachability
-     - To checek network status
+     - To check network status
      */
     private func beginListeningNetworkReachability() {
         reachabilityManager?.listener = { status in
@@ -76,7 +76,7 @@ final class NetworkManager: NetworkServiceProtocol {
     }
     
     /**
-      Send API Request
+      Send API Request, with Generic Type completion handler
      **/
     private func sendRequest<T: Codable>(payload: HTTPSPayloadProtocol?, completion: @escaping (Result<T, Error>) -> Void)  {
         
@@ -97,14 +97,14 @@ final class NetworkManager: NetworkServiceProtocol {
 
 }
 
-/// APIManager Protocol
+/// NetworkManager Protocol
 protocol NetworkManagerProtocol {
     func getAlbumsInfo(payload: HTTPSPayloadProtocol,completion: @escaping (Result<AlbumResponse, Error>) -> Void)
     func getTrackInfo(payload: HTTPSPayloadProtocol, completion: @escaping (Result<TrackResponse, Error>) -> Void)
     func getArtistInfo(payload: HTTPSPayloadProtocol, completion: @escaping (Result<ArtistResponse, Error>) -> Void)
 }
 /**
- Extension for APIManager
+ Extension for NetworkManager
  */
 extension NetworkManager: NetworkManagerProtocol {
     /**

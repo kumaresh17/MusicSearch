@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-import Foundation
 protocol PayLoadFormat {
     func formatGetPayload(url: HTTPSUrl,module: APIModuleProtocol) -> HTTPSPayloadProtocol?
 }

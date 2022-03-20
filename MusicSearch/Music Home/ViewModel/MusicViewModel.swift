@@ -4,7 +4,7 @@
 //
 //  Created by kumaresh shrivastava on 16/03/2022.
 //
-
+import Foundation
 import Combine
 
 // MARK: - Music home viewmodel
@@ -18,7 +18,7 @@ protocol MusicViewModelProtocol {
 
 final class MusicViewModel:MusicViewModelProtocol,PayLoadFormat {    
     
-    /** Combine Publisher for which we have binded with FruitListViewController **/
+    /** Combine Publisher for which we have binded with MusicHomeViewController **/
     @Published var dataForView:[MusicResponseProtocol]?
     @Published var error:Error?
     var dataForViewPub: Published<[MusicResponseProtocol]?>.Publisher {$dataForView}
@@ -27,7 +27,7 @@ final class MusicViewModel:MusicViewModelProtocol,PayLoadFormat {
     private var networkManagerProtocol:NetworkManagerProtocol?
     private var apiModuleProtocol:APIModuleProtocol?
     
-    /** Dependency injection with payloadData and Api manager so that we can perform unit test with Mock  data **/
+    /** Dependency injection with payloadData and Network manager so that we can perform unit test with Mock  data **/
     init(apiModule:APIModuleProtocol,networkManager:NetworkManagerProtocol) {
         self.apiModuleProtocol = apiModule
         self.networkManagerProtocol = networkManager

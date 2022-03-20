@@ -24,19 +24,9 @@ class MusicTableViewCell: UITableViewCell {
     }
     
     /// Display data on table view cell
-    ///
-    /// - Parameter data: Results containing all info
     func displayData(musicResponse: MusicResponseProtocol) {
-        if let title = musicResponse.title {
-            nameLabel.text = title
-        } else {
-            nameLabel.text = "No Album"
-        }
-        if let name = musicResponse.name {
-            artistLabel.text = name
-        } else {
-            artistLabel.text = "No Artist"
-        }
+        nameLabel.text = musicResponse.title ?? "No data"
+        artistLabel.text = musicResponse.name ?? "No data"
     }
 
 }

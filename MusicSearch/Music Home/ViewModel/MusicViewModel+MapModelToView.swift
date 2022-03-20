@@ -8,7 +8,7 @@
 import Foundation
 
 /**
- Mapping  Album, Artist and Tracks array of Concret Object to MusicResponseProtocol
+ Mapping  Album, Artist and Tracks array of concrete Object to MusicResponseProtocol
  Avoid using concrete Codable objects directly, instead used a ResponseProtocol
  Prepare Data which is required to display on the View
  */

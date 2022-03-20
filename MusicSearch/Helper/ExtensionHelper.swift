@@ -9,6 +9,36 @@ import Foundation
 import UIKit
 
 
+/// Date extension to check for invalid data
+extension Data {
+    func isInValid() -> Bool {
+        return self.count > 40 ? false : true
+    }
+}
+
+/// Date extension to check for eempty data
+extension Data {
+    func isEmptyData() -> Bool {
+        return self.count == 0 ? true : false
+    }
+}
+
+/// An image view extension to download image in background DispatchQueue thread
+extension UIImageView {
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
+}
+
+
 /// A Helper to remove view from the superview
 extension UIView {
     func remove() {
@@ -25,36 +55,6 @@ extension UIApplication {
             .first(where: { $0 is UIWindowScene })
             .flatMap({ $0 as? UIWindowScene })?.windows
             .first(where: \.isKeyWindow)
-    }
-}
-
-
-/// Date extension to check for invalid data
-extension Data {
-    func isInValid() -> Bool {
-        return self.count > 40 ? false : true
-    }
-}
-
-/// Date extension to check for eempty data
-extension Data {
-    func isEmptyData() -> Bool {
-        return self.count == 0 ? true : false
-    }
-}
-
-/// An image view extension to download image
-extension UIImageView {
-    func load(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
-        }
     }
 }
 

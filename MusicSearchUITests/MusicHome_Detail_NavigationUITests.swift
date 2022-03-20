@@ -32,7 +32,8 @@ class MusicHome_Detail_NavigationUITests: XCTestCase {
     }
     
     /**
-     Important note to test :- Simulator -> I/O - > Keyboard -> unselect connect to hardware keyboard to perform below UI test, else test will crash as it won't br able to find the physical keyboard KEYS.
+     Important note to test :- Simulator -> I/O - > Keyboard -> unselect connect to hardware keyboard to perform below UI test, else test will crash as it won't be able to find the physical keyboard KEYS.
+       Make sure physical keyboard comes up on the UI
      */
     func test_music_screen_search_and_activity_indicator_shows_hide_on_api_result_and_navigated_to_detail_screen_back() {
         
@@ -45,6 +46,7 @@ class MusicHome_Detail_NavigationUITests: XCTestCase {
         let searchByAlbumTrackArtistSearchField = app.searchFields["Search by album | track | artist "]
         searchByAlbumTrackArtistSearchField.tap()
         
+        expect.fulfill()
         
         let sKey = app/*@START_MENU_TOKEN@*/.keys["S"]/*[[".keyboards.keys[\"S\"]",".keys[\"S\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
         sKey.tap()
@@ -64,14 +66,12 @@ class MusicHome_Detail_NavigationUITests: XCTestCase {
         app/*@START_MENU_TOKEN@*/.buttons["Search"]/*[[".keyboards",".buttons[\"search\"]",".buttons[\"Search\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
         
         XCTAssertTrue(activityIndicator.exists)
-        
-        expect.fulfill()
+
+        waitForExpectations(timeout: 15, handler: nil)
         
         let tableCell =  app.tables/*@START_MENU_TOKEN@*/.staticTexts["Sound Of Silver"]/*[[".cells.staticTexts[\"Sound Of Silver\"]",".staticTexts[\"Sound Of Silver\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
         
         tableCell.tap()
-        
-        waitForExpectations(timeout: 15, handler: nil)
         
         XCTAssertFalse(activityIndicator.exists)
         

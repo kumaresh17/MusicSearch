@@ -37,7 +37,7 @@ extension HandledError: LocalizedError {
         case .unknown:
             return NSLocalizedString("Unknown error", comment: "Unknown error")
         case .inValidData:
-            return NSLocalizedString("In valid data", comment: "inValidData error")
+            return NSLocalizedString("Invalid data", comment: "inValidData error")
         }
     }
 }
