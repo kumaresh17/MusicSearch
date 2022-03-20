@@ -5,15 +5,15 @@ b. App support Dark mode.
 
 **Universal app:**
 
-App works on both iPhone and iPad and different orientations
+App works on both iPhone and iPad and different orientations.
 
-Minimum iOS deployment target is 13.0
+Minimum iOS deployment target is **13.0**
 
 **App shows use of:**
 
-a. Code structure and software architecture and design - using MVVM CLEAN architecture.\n 
-b. Combine used to bind VieModel to View\n 
-c. Unit test cases - With Mock APi call  
+a. Code structure and software architecture and design - using MVVM CLEAN architecture.
+b. Combine used to bind VieModel to View. 
+c. Unit test cases - With Mock APi call . 
 d. UITest cases to valiate the home and detail screen UI elements.
 e. XCTMetric Performance test case for XCTMemoryMetric with set baseline to cature any future regression related to leaks, heap allocations and fragementation.
 f. Coding best practice - Adopting to SOLID best principles, using of Protocol, extension, codable, dependency injection for better Testability, modularity, readability and scalability. 
