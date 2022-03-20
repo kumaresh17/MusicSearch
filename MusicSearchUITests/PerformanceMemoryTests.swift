@@ -13,7 +13,7 @@ class PerformanceTests: XCTestCase {
     
     /**
      Important note to test :- Simulator -> I/O - > Keyboard -> unselect connect to hardware keyboard to perform below UI test, else test will crash as it won't be able to find the physical keyboard KEYS.
-       Make sure physical keyboard comes up on the UI
+       Make sure physical keyboard comes up on the Simulator
      */
     func test_music_detail_performance_memory_measure() {
         let app = XCUIApplication()

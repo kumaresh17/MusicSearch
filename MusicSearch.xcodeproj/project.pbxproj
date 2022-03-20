@@ -37,6 +37,7 @@
 		4028072827E2B2CD00ACA8E0 /* MusicHomeViewController+Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4028072727E2B2CD00ACA8E0 /* MusicHomeViewController+Segue.swift */; };
 		4028072A27E2B4F900ACA8E0 /* MusicViewModel+MapModelToView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4028072927E2B4F900ACA8E0 /* MusicViewModel+MapModelToView.swift */; };
 		4043B65C27E4C21300CA86C7 /* PerformanceMemoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4043B65B27E4C21300CA86C7 /* PerformanceMemoryTests.swift */; };
+		407BF1CB27E77484003349FF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 407BF1CA27E77484003349FF /* README.md */; };
 		4096CB1C27E3D8280074148B /* MockNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4096CB1B27E3D8280074148B /* MockNetworkManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +93,7 @@
 		4028072727E2B2CD00ACA8E0 /* MusicHomeViewController+Segue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MusicHomeViewController+Segue.swift"; sourceTree = "<group>"; };
 		4028072927E2B4F900ACA8E0 /* MusicViewModel+MapModelToView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MusicViewModel+MapModelToView.swift"; sourceTree = "<group>"; };
 		4043B65B27E4C21300CA86C7 /* PerformanceMemoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceMemoryTests.swift; sourceTree = "<group>"; };
+		407BF1CA27E77484003349FF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4096CB1B27E3D8280074148B /* MockNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,6 +125,7 @@
 		402806BE27E25B4F00ACA8E0 = {
 			isa = PBXGroup;
 			children = (
+				407BF1CA27E77484003349FF /* README.md */,
 				402806C927E25B4F00ACA8E0 /* MusicSearch */,
 				402806E027E25B5400ACA8E0 /* MusicSearchTests */,
 				402806EA27E25B5400ACA8E0 /* MusicSearchUITests */,
@@ -371,6 +374,7 @@
 			files = (
 				402806D727E25B5300ACA8E0 /* LaunchScreen.storyboard in Resources */,
 				402806D427E25B5300ACA8E0 /* Assets.xcassets in Resources */,
+				407BF1CB27E77484003349FF /* README.md in Resources */,
 				402806D227E25B4F00ACA8E0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
