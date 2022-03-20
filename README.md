@@ -1,6 +1,6 @@
 **Basic Features:**
 
-a. App has the capability to search for music related to Album, Track and Artist. On tap of any search item app will navigate to detail screen which will show the Image, title and track details.
+a. App has the capability to search for music related to Album, Track and Artist. On tap of any list item app will navigate to detail screen which will show the Image, title and track details.
 b. App support Dark mode.
 
 **Universal app:**
@@ -13,8 +13,8 @@ Minimum iOS deployment target is **13.0**
 
 a. Code structure and software architecture and design - using MVVM CLEAN architecture.
 b. Combine used to bind VieModel to View. 
-c. Unit test cases - With Mock APi call . 
-d. UITest cases to valiate the home and detail screen UI elements. ( Important note to test :- Simulator -> I/O - > Keyboard -> unselect connect to hardware keyboard to perform UI test, else test will crash as it won't be able to find the physical keyboard KEYS. Make sure physical keyboard comes up on the Simulator)
+c. Unit test cases - Testing for Payload data, network manager and View Model with Mock Api call. 
+d. UITest cases to valiate the home and detail screen UI elements. (Important note to test :- Simulator -> I/O - > Keyboard -> unselect connect to hardware keyboard to perform UI test, else test will crash as it won't be able to find the physical keyboard KEYS. Make sure physical keyboard comes up on the Simulator)
 e. XCTMetric Performance test case for XCTMemoryMetric with set baseline to cature any future regression related to leaks, heap allocations and fragementation.
 f. Coding best practice - Adopting to SOLID best principles, using of Protocol, extension, codable, dependency injection for better Testability, modularity, readability and scalability. 
 g. Support dark mode - As all the colors are by default system color.
