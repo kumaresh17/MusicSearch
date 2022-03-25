@@ -25,8 +25,8 @@ class MusicTableViewCell: UITableViewCell {
     
     /// Display data on table view cell
     func displayData(musicResponse: MusicResponseProtocol) {
-        nameLabel.text = musicResponse.title ?? "No data"
-        artistLabel.text = musicResponse.name ?? "No data"
+        nameLabel.text = musicResponse.title ?? NSLocalizedString("Nodata", comment: "")
+        artistLabel.text = musicResponse.name ?? NSLocalizedString("Nodata", comment: "")
     }
 
 }

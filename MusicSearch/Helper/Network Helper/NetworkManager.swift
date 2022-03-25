@@ -67,7 +67,7 @@ final class NetworkManager: NetworkServiceProtocol {
     private func showErrorForNoNetwork()  {
         task?.suspend()
         DispatchQueue.main.async {
-            AlertViewController.showAlert(withTitle: "Alert", message: "No Internet Connection")
+            AlertViewController.showAlert(withTitle: NSLocalizedString("Alert", comment: ""), message: NSLocalizedString("NoInternetConnection", comment: "No Internet Connection"))
         }
     }
     /// init Kit

@@ -12,7 +12,7 @@ protocol AlertDelegate: AnyObject {
 }
 
 class AlertViewController {
-    class func showAlert(withTitle title: String, message:String, buttons:[String] = ["Ok"], delegate: AlertDelegate? = nil, tag: Int = 0){
+    class func showAlert(withTitle title: String, message:String, buttons:[String] = [NSLocalizedString("Ok", comment: "")], delegate: AlertDelegate? = nil, tag: Int = 0){
         let keyWindow = UIApplication.shared.keyWindow
         
         var presentingViewController = keyWindow?.rootViewController

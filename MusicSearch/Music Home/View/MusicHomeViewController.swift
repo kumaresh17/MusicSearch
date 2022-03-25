@@ -24,7 +24,7 @@ class MusicHomeViewController: UIViewController {
         super.viewDidLoad()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
-        self.title = "Music search"
+        self.title = NSLocalizedString("Musicsearch", comment: "")
         musicViewModel = MusicViewModel()
         bindingOfViewWithViewModel()
     }
@@ -45,7 +45,7 @@ class MusicHomeViewController: UIViewController {
             .receive(on:DispatchQueue.main)
             .sink { (error) in
                 guard let error = error else {return }
-                AlertViewController.showAlert(withTitle:"Alert" , message: error.localizedDescription)
+                AlertViewController.showAlert(withTitle:NSLocalizedString("Alert", comment: "") , message: error.localizedDescription)
                 ActivityIndicator.stopActivityIndicator()
             }
             .store(in: &anyCancelable)

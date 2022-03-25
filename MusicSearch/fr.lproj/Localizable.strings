@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  MusicSearch
+
+  Created by kumaresh shrivastava on 25/03/2022.
+  
+*/
+"Musicdetails" = "Détails de la musique";
+"Musicsearch" = "Recherche de musique";
+"Nodata" = "Pas de données";
+"Musiclist" = "Liste de musique";
+"SearchTextLimit" = "Le texte de recherche ne peut pas dépasser 20 caractères";
+"Ok" = "D'accord";
+"Invalid URL" = "URL invalide";
+"Invalid Payload" = "Invalid Payload";
+"Unexpected status code" = "Code d'état inattendu";
+"No data found" = "Aucune donnée disponible";
+"InvalidRequestHeader" = "InvalidRequestHeader";
+"InvalidRequest" = "InvalidRequest";
+"Unknown error" = "Erreur inconnue";
+"Invalid data" = "Données invalides";
+"Alert" = "Alerte";
+"NoInternetConnection" = "No Internet Connection";

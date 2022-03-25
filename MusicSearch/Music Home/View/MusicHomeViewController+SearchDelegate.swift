@@ -42,7 +42,7 @@ extension MusicHomeViewController:UISearchBarDelegate {
    private func checkAndRequestMusicList(_ searchBar: UISearchBar) -> Void {
         searchBar.resignFirstResponder()
         guard let text = searchBar.text, text.count < 20  else {
-            return AlertViewController.showAlert(withTitle: "Music list", message: "Search text can not be more than 20 characters")
+            return AlertViewController.showAlert(withTitle: NSLocalizedString("Musiclist", comment: ""), message:NSLocalizedString("SearchTextLimit", comment: "Search text can not be more than 20 characters") )
         }
         guard let searchText = searchBar.text, !searchText.isEmpty else { return }
         ActivityIndicator.showActivityIndicator(view: self.view)

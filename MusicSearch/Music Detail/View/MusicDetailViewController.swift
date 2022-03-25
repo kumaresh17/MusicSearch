@@ -16,13 +16,22 @@ class MusicDetailViewController: UIViewController {
     var musicResponseProtocol: MusicResponseProtocol?
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        self.navigationItem.title = "Music details"
+        self.navigationItem.title = NSLocalizedString("Musicdetails", comment: "")
         titleLabel.text = musicResponseProtocol?.title
         nameLabel.text = musicResponseProtocol?.name
         
-        guard let imageUrl = URL(string: (musicResponseProtocol?.images?[3].url)!) else { return }
-        imageView.load(url: imageUrl)
+        guard let count = musicResponseProtocol?.images?.count else {return}
+        
+        if (count != 0) {
+            guard let musicImage = musicResponseProtocol?.images?[count - 1] else {return}
+            guard let imageUrl = URL(string: musicImage.url) else {return}
+            imageView.load(url: imageUrl)
+        }
     }
+    
+    
+    
 
 }
